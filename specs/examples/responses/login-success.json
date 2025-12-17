@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMjMiLCJleHAiOjE3MDU1MjE2MDB9.example",
+    "expiresAt": "2025-01-17T12:00:00Z",
+    "user": {
+      "id": "user_123abc",
+      "username": "alice",
+      "email": "alice@example.com"
+    }
+  },
+  "error": null
+}
+

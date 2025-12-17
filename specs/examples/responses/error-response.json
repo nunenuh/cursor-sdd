@@ -1,0 +1,13 @@
+{
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "INVALID_CREDENTIALS",
+    "message": "Invalid username or password",
+    "details": {
+      "field": "password",
+      "reason": "Password does not match"
+    }
+  }
+}
+

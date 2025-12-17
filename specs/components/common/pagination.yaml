@@ -1,0 +1,62 @@
+# Pagination Component
+
+**Created:** 2025-01-16T12:00:00Z UTC  
+**Modified:** 2025-01-16T12:00:00Z UTC
+
+**⚠️ EXAMPLE:** This is an example pagination component. Customize for your project.
+
+Reusable pagination parameters for OpenAPI specifications.
+
+---
+
+```yaml
+parameters:
+  PageParam:
+    name: page
+    in: query
+    description: Page number (1-indexed)
+    required: false
+    schema:
+      type: integer
+      minimum: 1
+      default: 1
+      example: 1
+
+  LimitParam:
+    name: limit
+    in: query
+    description: Number of items per page
+    required: false
+    schema:
+      type: integer
+      minimum: 1
+      maximum: 100
+      default: 20
+      example: 20
+
+schemas:
+  Pagination:
+    type: object
+    properties:
+      page:
+        type: integer
+        description: Current page number
+        example: 1
+      limit:
+        type: integer
+        description: Items per page
+        example: 20
+      total:
+        type: integer
+        description: Total number of items
+        example: 100
+      totalPages:
+        type: integer
+        description: Total number of pages
+        example: 5
+```
+
+---
+
+**Usage:** Reference in OpenAPI specs using `$ref: '#/components/parameters/PageParam'`
+

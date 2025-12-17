@@ -1,0 +1,186 @@
+# Cursor Rules for Spec-Driven Development
+
+**Created:** 2025-01-16T12:00:00Z UTC  
+**Modified:** 2025-01-16T12:00:00Z UTC
+
+## Project Overview
+
+This project follows **Spec-Driven Development (SDD)** principles, where specifications serve as the single source of truth before implementation.
+
+## Core Principles
+
+1. **Specification-First:** Always read and understand specifications before writing code
+2. **Single Source of Truth:** Specifications in `specs/` directory are authoritative
+3. **AI-Agnostic:** All specifications use standard formats (Markdown, YAML, JSON)
+4. **Persistent Context:** Reference `specs/memory/constitution.md` for stable project rules
+
+## Directory Structure
+
+```
+.
+├── specs/              # All specifications (single source of truth) ⚠️ EXAMPLES
+│   ├── README.md      # Specs overview
+│   ├── index.md       # Master index
+│   ├── features/      # Feature specifications (P.E.C model)
+│   │   ├── example-feature.md      # Complete example
+│   │   └── user-management/        # Feature examples
+│   ├── api/           # API contracts and schemas
+│   │   └── openapi.yaml            # OpenAPI 3.0 spec (EXAMPLE)
+│   ├── components/    # Reusable OpenAPI components
+│   │   ├── common/    # Pagination, errors, auth
+│   │   └── models/    # Data models
+│   ├── contracts/     # API contracts
+│   ├── conventions/   # Coding standards (00-07)
+│   │   ├── 00-feature-spec-template.md  # P.E.C template
+│   │   └── ...
+│   ├── examples/      # Code and API examples
+│   │   ├── typescript/# TypeScript examples
+│   │   ├── python/    # Python examples
+│   │   ├── requests/  # Request examples (JSON)
+│   │   └── responses/ # Response examples (JSON)
+│   ├── memory/        # Persistent context files
+│   │   └── constitution.md # Non-negotiable project rules
+│   ├── schemas/       # Data schemas
+│   ├── security/      # Security specifications
+│   ├── tests/        # Test specifications
+│   ├── validation/   # Validation rules
+│   ├── versions/      # API versioning
+│   ├── workflows/    # Process workflows
+│   └── integrations/ # Integration specifications
+├── docs/              # Human-readable documentation (for humans and AI)
+│   ├── api/           # API documentation
+│   ├── architecture/  # System architecture
+│   ├── decisions/     # Architectural Decision Records (ADRs)
+│   ├── deployment/    # Deployment guides
+│   ├── implementation/# Implementation guides
+│   ├── planning/      # Planning documents
+│   ├── quick-start/   # Getting started guides
+│   ├── testing/       # Testing guides
+│   └── guides/        # General guides
+├── specs/              # All specifications (single source of truth) ⚠️ EXAMPLES
+│   ├── memory/        # Persistent context files
+│   │   └── constitution.md # Non-negotiable project rules
+└── .cursor/           # Cursor-specific planning and rules
+```
+
+## Specification Structure
+
+### Feature Specifications
+- Located in `specs/features/`
+- Use P.E.C model (Problem, Expectation, Constraint)
+- Reference: `specs/conventions/00-feature-spec-template.md`
+
+### API Specifications
+- Located in `specs/api/`
+- Use OpenAPI, AsyncAPI, or JSON Schema formats
+- Machine-readable and human-reviewable
+
+### Conventions
+- Located in `specs/conventions/`
+- Coding standards, patterns, and best practices
+- Numbered files (00-overview.md, 01-language-conventions.md, etc.)
+
+## Code Generation Rules
+
+### Before Writing Code
+1. **Read the spec:** Check `specs/features/[feature-name].md` (use P.E.C model)
+2. **Check constitution:** Review `specs/memory/constitution.md` for constraints
+3. **Review API contract:** Check `specs/api/openapi.yaml` or `specs/contracts/`
+4. **Check examples:** Reference `specs/examples/` for code examples (TypeScript/Python)
+5. **Review docs:** Check `docs/implementation/` for implementation guides
+6. **Follow conventions:** Reference `specs/conventions/` for standards
+7. **Validate constraints:** Ensure no constraint violations
+
+### Code Style
+- Follow conventions in `specs/conventions/`
+- Reference `specs/memory/constitution.md` for architectural decisions
+- Write code that matches specifications exactly
+- Do not invent behavior not in specifications
+
+### Testing
+- Tests must be derived from specifications
+- Test acceptance criteria from feature specs
+- Validate against API contracts
+- Check constraint compliance
+
+## AI Agent Behavior
+
+### Context Management
+- Load `specs/memory/constitution.md` first for stable context
+- Read `specs/index.md` for overview of all specs
+- Reference feature specs before implementation (P.E.C model)
+- Check `specs/examples/` for code examples (TypeScript/Python)
+- Use specs as epistemic boundaries (do not invent beyond spec)
+- Re-hydrate context from artifacts, don't rebuild
+
+### Constraint Enforcement
+- **Never violate constraints** listed in specs
+- Check `specs/memory/constitution.md` for non-negotiable rules
+- Validate against API contracts
+- Respect infrastructure limits
+
+### Error Handling
+- If spec is unclear, ask for clarification
+- If constraint conflicts, flag it immediately
+- If implementation differs from spec, update spec first
+- Document any deviations from spec
+
+## File Naming Conventions
+
+- Feature specs: `specs/features/[feature-name].md`
+- API specs: `specs/api/[api-name].yaml` or `.json`
+- Conventions: `specs/conventions/[NN]-[topic].md`
+- Workflows: `specs/workflows/[workflow-name].md`
+
+## Documentation Standards
+
+### Markdown File Headers
+All markdown files must include UTC datetime headers:
+
+```markdown
+# Document Title
+
+**Created:** YYYY-MM-DDTHH:MM:SSZ UTC  
+**Modified:** YYYY-MM-DDTHH:MM:SSZ UTC
+```
+
+- **Created:** UTC datetime when document was first created
+- **Modified:** UTC datetime when document was last modified
+- **Format:** ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+- Always update **Modified** date when editing documents
+
+## Code Examples
+
+### TypeScript Examples
+- `specs/examples/typescript/auth-login-service.ts` - Service implementation
+- `specs/examples/typescript/auth-controller.ts` - API controller
+- `specs/examples/typescript/user-model.ts` - Data model
+
+### Python Examples
+- `specs/examples/python/auth_login_service.py` - Service implementation
+- `specs/examples/python/auth_controller.py` - FastAPI controller
+- `specs/examples/python/user_model.py` - SQLAlchemy/Pydantic model
+
+### API Examples
+- `specs/examples/requests/` - Request examples (JSON)
+- `specs/examples/responses/` - Response examples (JSON)
+
+## References
+
+- **Specs Index:** `specs/index.md` - Master index of all specifications
+- **Research:** `research/` directory - Best practices and methodologies
+- **Templates:** `specs/conventions/00-feature-spec-template.md` - P.E.C template
+- **Feature Example:** `specs/features/example-feature.md` - Complete example
+- **Constitution:** `specs/memory/constitution.md` - Project rules
+
+## Important Notes
+
+- **⚠️ All specs are examples** - Customize for your project
+- **Specs are the source of truth** - code must match specs
+- **Constitution is stable** - don't change frequently
+- **AI-agnostic formats** - use Markdown, YAML, JSON
+- **Human-reviewable** - keep specs concise and clear
+- **Version controlled** - all specs tracked in Git
+- **Datetime headers** - all markdown files must have Created/Modified UTC timestamps
+- **Code examples available** - Reference `specs/examples/typescript/` and `specs/examples/python/`
+- **P.E.C model** - All feature specs use Problem-Expectation-Constraint structure

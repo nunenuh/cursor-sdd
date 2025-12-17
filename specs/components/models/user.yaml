@@ -1,0 +1,68 @@
+# User Model Component
+
+**Created:** 2025-01-16T12:00:00Z UTC  
+**Modified:** 2025-01-16T12:00:00Z UTC
+
+**⚠️ EXAMPLE:** This is an example user model component. Customize for your project.
+
+User data model for OpenAPI specifications.
+
+---
+
+```yaml
+schemas:
+  User:
+    type: object
+    required:
+      - id
+      - username
+      - email
+    properties:
+      id:
+        type: string
+        description: Unique user identifier
+        example: "user_123abc"
+      username:
+        type: string
+        description: Username
+        example: alice
+      email:
+        type: string
+        format: email
+        description: User email address
+        example: alice@example.com
+      name:
+        type: string
+        nullable: true
+        description: Full name
+        example: "Alice Smith"
+      createdAt:
+        type: string
+        format: date-time
+        description: Account creation timestamp
+        example: "2025-01-01T00:00:00Z"
+      updatedAt:
+        type: string
+        format: date-time
+        description: Last update timestamp
+        example: "2025-01-16T12:00:00Z"
+```
+
+---
+
+## Code Examples
+
+See implementation examples:
+- **TypeScript:** `../../examples/typescript/user-model.ts` - TypeORM/Prisma examples
+- **Python:** `../../examples/python/user_model.py` - SQLAlchemy/Pydantic examples
+
+## Related
+
+- **Database Schema:** `../../schemas/database-schema.md` - Database structure
+- **Feature Spec:** `../../features/example-feature.md` - User authentication feature
+- **API Spec:** `../../api/openapi.yaml` - Complete API specification
+
+---
+
+**Usage:** Reference in OpenAPI specs using `$ref: '#/components/schemas/User'`
+

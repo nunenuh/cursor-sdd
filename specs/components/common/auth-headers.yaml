@@ -1,0 +1,35 @@
+# Authentication Headers Component
+
+**Created:** 2025-01-16T12:00:00Z UTC  
+**Modified:** 2025-01-16T12:00:00Z UTC
+
+**⚠️ EXAMPLE:** This is an example authentication header component. Customize for your project.
+
+Standard authentication header parameters for OpenAPI specifications.
+
+---
+
+```yaml
+parameters:
+  AuthorizationHeader:
+    name: Authorization
+    in: header
+    description: Bearer token for authentication
+    required: true
+    schema:
+      type: string
+      format: bearer
+      example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+
+securitySchemes:
+  BearerAuth:
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    description: JWT token authentication
+```
+
+---
+
+**Usage:** Reference in OpenAPI specs using `$ref: '#/components/parameters/AuthorizationHeader'`
+
